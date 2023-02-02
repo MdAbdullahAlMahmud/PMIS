@@ -42,6 +42,8 @@ public class RegistrationFragment extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseFirestore firebaseFirestore;
 
+    private String DIU_EMAIL_PATTERN = "@diu.edu.bd";
+
     public RegistrationFragment() {
         // Required empty public constructor
     }
@@ -156,6 +158,17 @@ public class RegistrationFragment extends Fragment {
             return;
         }
 
+
+
+
+
+
+        if (!email.contains(DIU_EMAIL_PATTERN)){
+            emailEdt.setError("Provide DIU email");
+            Toasty.error(getContext(),"Provide DIU email").show();
+            return;
+
+        }
         if (batch.isEmpty()){
             batchEdt.setError("required");
             return;
