@@ -14,10 +14,11 @@ public class User {
     private  String batch_id;
     private  String dept;
     private  String program;
+    private  String password;
     private  ProjectType projectType;
 
 
-    public User(String name, String email, String phone, String versity_id, String image, String batch_id, String dept, String program, ProjectType projectType) {
+    public User(String name, String email, String phone, String versity_id, String image, String batch_id, String dept, String program, ProjectType projectType,String password) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -27,8 +28,20 @@ public class User {
         this.dept = dept;
         this.program = program;
         this.projectType = projectType;
+        this.password= password;
     }
 
+
+    public User() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getName() {
         return name;

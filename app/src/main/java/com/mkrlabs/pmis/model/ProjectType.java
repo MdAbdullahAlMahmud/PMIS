@@ -1,5 +1,5 @@
 package com.mkrlabs.pmis.model;
 
- enum ProjectType {
+ public enum ProjectType {
      PROJECT,RESEARCH,RESEARCH_BASED_PROJECT
  }

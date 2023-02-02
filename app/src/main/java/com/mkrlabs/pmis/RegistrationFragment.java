@@ -21,6 +21,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.mkrlabs.pmis.model.ProjectType;
+import com.mkrlabs.pmis.model.User;
 
 import java.util.ArrayList;
 
@@ -37,6 +40,7 @@ public class RegistrationFragment extends Fragment {
 
     private ProgressBar registrationProgressBar;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore firebaseFirestore;
 
     public RegistrationFragment() {
         // Required empty public constructor
@@ -60,6 +64,7 @@ public class RegistrationFragment extends Fragment {
 
     private void initView(View view) {
 
+        firebaseFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         signUpButton =view.findViewById(R.id.signUpButton);
         registrationSignIn =view.findViewById(R.id.registrationSignIn);
@@ -179,13 +184,16 @@ public class RegistrationFragment extends Fragment {
 
 
         registrationProgressBar.setVisibility(View.VISIBLE);
-        createAccountWithUserCredential(email,password);
+
+        User user = new User(name,email,"","","",batch,"","", ProjectType.PROJECT,password);
+
+        createAccountWithUserCredential(email,password,user);
 
 
 
     }
 
-    private void createAccountWithUserCredential(String email, String password) {
+    private void createAccountWithUserCredential(String email, String password,User user) {
 
 
         mAuth .createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -193,12 +201,7 @@ public class RegistrationFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()){
 
-                    registrationProgressBar.setVisibility(View.GONE);
-                    Toasty.success(getContext(),"Congratulations , Your account has been Created").show();
-
-                    Intent intent = new Intent(getContext(),HomeActivity.class);
-                    startActivity(intent);
-                    getActivity().finish();
+                    storeUserDataToFirebase(user,task.getResult().getUser().getUid().toString());
 
 
                 }else {
@@ -209,6 +212,27 @@ public class RegistrationFragment extends Fragment {
             }
         });
 
+
+    }
+
+    private void storeUserDataToFirebase(User user,String uid) {
+
+
+        firebaseFirestore.collection("users").document(uid).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    registrationProgressBar.setVisibility(View.GONE);
+                    Toasty.success(getContext(),"Congratulations , Your account has been Created").show();
+
+                    Intent intent = new Intent(getContext(),HomeActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }else {
+
+                }
+            }
+        });
 
     }
 }
