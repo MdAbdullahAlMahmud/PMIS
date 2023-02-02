@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "212334840586",
+    "project_id": "pmis-5cce0",
+    "storage_bucket": "pmis-5cce0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212334840586:android:be8091e489b080bfc988f3",
+        "android_client_info": {
+          "package_name": "com.mkrlabs.pmis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212334840586-mmd13mrlcksboo8cg8l413sii6pll0tr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjzKCv4A9wTtAcVaq8_HzoBmqNSom2Dk0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212334840586-mmd13mrlcksboo8cg8l413sii6pll0tr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
