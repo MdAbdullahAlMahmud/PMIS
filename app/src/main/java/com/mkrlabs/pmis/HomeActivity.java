@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         webview.getSettings().setLoadsImagesAutomatically(true);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        webview.loadUrl("https://munna.wegrapps.com/");
+        webview.loadUrl("https://www.google.com/");
 
 
 
