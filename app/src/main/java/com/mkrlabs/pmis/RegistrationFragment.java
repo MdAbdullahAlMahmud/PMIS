@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.mkrlabs.pmis.model.ProjectType;
 import com.mkrlabs.pmis.model.User;
+import com.mkrlabs.pmis.ui.HomeActivity;
 
 import java.util.ArrayList;
 
@@ -238,7 +239,7 @@ public class RegistrationFragment extends Fragment {
                     registrationProgressBar.setVisibility(View.GONE);
                     Toasty.success(getContext(),"Congratulations , Your account has been Created").show();
 
-                    Intent intent = new Intent(getContext(),HomeActivity.class);
+                    Intent intent = new Intent(getContext(), HomeActivity.class);
                     startActivity(intent);
                     getActivity().finish();
                 }else {

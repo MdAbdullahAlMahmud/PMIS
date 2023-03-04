@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.mkrlabs.pmis.ui.HomeActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
